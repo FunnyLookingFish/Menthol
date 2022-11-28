@@ -18,6 +18,7 @@ import Visualize from './pages/Visualize';
 import Budget from './pages/Budget';
 import AboutUs from './pages/Aboutus';
 
+import { FinanceProvider } from './utils/stateManagment/GlobalState';
 
 
 
@@ -34,38 +35,40 @@ function App() {
           
             <Nav />
             <Routes>
-              <Route 
-                path="/" 
-                element={<Home />} 
-              />
-              <Route 
-                path="/login" 
-                element={<Login />} 
-              />
-              <Route 
-                path="/signup" 
-                element={<Signup />} 
-              />
-              <Route 
-                path="/add-items" 
-                element={<AddItems />} 
-              />
-              <Route 
-                path="/visualize" 
-                element={<Visualize />} 
-              />
-              <Route 
-                path="/budget" 
-                element={<Budget />} 
-              />
-              <Route 
-                path="/about-us" 
-                element={<AboutUs />} 
-              />
-              <Route 
-                path="*" 
-                element={<NoMatch />} 
-              />
+              <FinanceProvider>
+                <Route 
+                  path="/" 
+                  element={<Home />} 
+                />
+                <Route 
+                  path="/login" 
+                  element={<Login />} 
+                />
+                <Route 
+                  path="/signup" 
+                  element={<Signup />} 
+                />
+                <Route 
+                  path="/add-items" 
+                  element={<AddItems />} 
+                />
+                <Route 
+                  path="/visualize" 
+                  element={<Visualize />} 
+                />
+                <Route 
+                  path="/budget" 
+                  element={<Budget />} 
+                />
+                <Route 
+                  path="/about-us" 
+                  element={<AboutUs />} 
+                />
+                <Route 
+                  path="*" 
+                  element={<NoMatch />} 
+                />
+              </FinanceProvider>
             </Routes>
           
         </div>
