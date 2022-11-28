@@ -18,24 +18,27 @@ const typeDefs = gql`
 
   type Home {
     _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
+    payment: Number
   }
 
   type Food {
-    token: ID!
-    user: User
+    grocery: String
+    expense: Number
   }
 
   type Utilities {
-    token: ID!
-    user: User
+    utilities: String
+    expense: Number
+  }
+
+  type Vehicle {
+    name: String
+    expense: Number
   }
 
   type Misc {
-    token: ID!
-    user: User
+    name: String
+    expense: Number
   }
 
   type Query {

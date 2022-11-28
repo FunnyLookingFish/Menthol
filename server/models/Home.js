@@ -1,30 +1,26 @@
 const { Schema, model } = require('mongoose');
 
-const schoolSchema = new Schema(
+const homeSchema = new Schema(
   {
-    name: {
+    _id: {
       type: String,
       required: true,
-      unique: true,
       trim: true
     },
-    location: {
-      type: String,
-      required: true
-    },
-    studentCount: {
+    payment: {
       type: Number,
       required: true
     },
-    classes: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Class'
-      }
-    ]
+
+//     classes: [
+//       {
+//         type: Schema.Types.ObjectId,
+//         ref: 'Class'
+//       }
+//     ]
   }
 );
 
-const School = model('School', schoolSchema);
+const Home = model('Home', homeSchema);
 
-module.exports = School;
+module.exports = Home;
