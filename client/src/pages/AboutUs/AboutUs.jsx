@@ -1,4 +1,4 @@
-import morgan from '../../assets/images/morgan.jpg'
+import morgan from '../../assets/images/Morgan.jpg'
 
 export default function AboutUs(){
 
