@@ -13,12 +13,10 @@ const budgetSchema = new Schema(
       required: true
     },
 
-    budget: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Budget'
-      }
-    ]
+    budget: {
+        type: Number,
+        required: true
+    },
   }
 );
 
