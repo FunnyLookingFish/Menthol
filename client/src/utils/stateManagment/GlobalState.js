@@ -6,7 +6,7 @@ const { Provider } = FinanceContext;
 
 const FinanceProvider = ({value = [], ...props}) => {
     const [state, dispatch] = useStateReducer({
-        categories:[{name:"Vehicles", items:[]}, {name:"Home", items:[]}, {name:"MISC", items:[]}]
+        categories:
     });
 
     return <Provider value={[state, dispatch]} {...props}/>

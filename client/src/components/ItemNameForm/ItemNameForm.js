@@ -6,7 +6,7 @@ export default function ItemNameForm(){
     const [inputValue, setInputValue] = useState();
     const [optionValue, setOptionValue] = useState();
 
-    const { loading, data } = useQuery();//search for categories
+    const { data } = useQuery();//search for categories
     const [ addItemToCat, {error}] = useMutation();//add item to category
 
     function handleInputChange(e){
@@ -22,9 +22,6 @@ export default function ItemNameForm(){
         setOptionValue(e.target.id);
     };
     
-    if(loading){
-        return <h2>Loading...</h2>
-    }
 
     return(
         <form onSubmit={handleFormSubmit}>
