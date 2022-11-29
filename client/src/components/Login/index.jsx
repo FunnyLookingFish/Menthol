@@ -13,7 +13,7 @@ export default function Login(){
         <img
           src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
           class="w-full"
-          alt="Sample image"
+          alt="Sample "
         />
       </div>
       <div class="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
