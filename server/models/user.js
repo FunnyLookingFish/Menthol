@@ -19,10 +19,10 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  budget: [
+  expense: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Budget',
+      ref: 'Expense',
     },
   ],
 });
