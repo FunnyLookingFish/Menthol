@@ -1,24 +1,24 @@
-const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
-const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require("apollo-server-express");
+const { User } = require("../models");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate('budgets');
+      return User.find().populate("expenses");
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('budgets');
+      return User.findOne({ username }).populate("expenses");
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('budgets');
+        return User.findOne({ _id: context.user._id }).populate("expenses");
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
-    budgets: async (parent, args, context) => {
-        return User.findOne({_id: args._id }).populate('budgets');
-    }
+    expenses: async (parent, args, context) => {
+      return User.findOne({ _id: args._id }).populate("expenses");
+    },
   },
 
   Mutation: {
@@ -31,48 +31,69 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError('No user found with this email address');
+        throw new AuthenticationError("No user found with this email address");
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError("Incorrect credentials");
       }
 
       const token = signToken(user);
 
       return { token, user };
     },
-    addBudget: async (parent, { name, expense, budget }, context) => {
+    addExpense: async (parent, { name, expense, budget }, context) => {
       if (context.user) {
         // const budget = await Thought.create({
         //   thoughtText,
         //   thoughtAuthor: context.user.username,
         // });
 
-       const budget = await User.findOneAndUpdate(
+        const expense = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { budgets: { name, expense, budget } } }
+          { $addToSet: { expenses: { name, expense, budget } } }
         );
 
-        return budget;
+        return expense;
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
+  },
+  removeExpense: async (parent, { expenseid }, context) => {
+    if (context.user) {
+      await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $pull: { expenses: { _id: expenseid } } }
+      );
 
-    },
-    removeBudget: async (parent, { budgetid }, context) => {
-      if (context.user) {
+      return "You have removed an expense!";
+    }
+  },
 
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { budgets: { _id: budgetid } } }
-        );
+  addItem: async (parent, { name, price }, context) => {
+    if (context.user) {
+      const item = await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $addToSet: { items: { name, price } } }
+      );
 
-        return ('You have removed an expense');
-      }
-    },
+      return item;
+    }
+    throw new AuthenticationError("You need to be logged in!");
+  },
+
+  removeItem: async (parent, { itemid }, context) => {
+    if (context.user) {
+      await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $pull: { item: { _id: itemid } } }
+      );
+
+      return "You have removed an item!";
+    }
+  },
 };
 
 module.exports = resolvers;
