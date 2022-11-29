@@ -6,53 +6,27 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    budget: [Budget]!
+    budgets: [Budget]!
   }
 
   type Budget {
     _id: ID
     name: String
-    expense: String
-    budget: [Budget]!
+    expense: Number!
+    budget: Number!
   }
 
-  type Home {
-    _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
-  }
-
-  type Food {
-    token: ID!
-    user: User
-  }
-
-  type Utilities {
-    token: ID!
-    user: User
-  }
-
-  type Misc {
-    token: ID!
-    user: User
-  }
 
   type Query {
     users: [User]
     user(username: String!): User
-    thoughts(username: String): [Thought]
-    thought(thoughtId: ID!): Thought
+    budgets(_id: ID): [Budget]
     me: User
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
-    login(email: String!, password: String!): Auth
-    addThought(thoughtText: String!): Thought
-    addComment(thoughtId: ID!, commentText: String!): Thought
-    removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
+    addBudget(name: String!, expense: Number!, budget: Number!): Budget
+    removeBudget(budgetid: ID): String
   }
 `;
 
