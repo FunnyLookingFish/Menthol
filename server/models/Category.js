@@ -1,21 +1,15 @@
 const { Schema, model } = require('mongoose');
 
 const categorySchema = new Schema({
-    items: {
-        type: String,
-        required: true,
-        trim: true,
-    },
+    items: [{
+        ref: 'Item',
+        type: Schema.Types.ObjectId
+    }],
     name: {
         type: String,
         required: true,
         trim: true,
     },
-    cost: {
-        type: Number,
-        required: true,
-        min: 0.01,
-    }
 })
 
 const Category = model('Category', categorySchema);
