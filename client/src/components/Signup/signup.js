@@ -1,6 +1,5 @@
 import {useState} from 'react';
 import { useFinanceContext } from '../../utils/stateManagment/GlobalState';
-import Auth from '../utils/Auth/auth';
 
 export default function Signup(){
     const [inputEmail, setEmail] = useState('');
