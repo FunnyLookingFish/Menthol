@@ -19,6 +19,10 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  budget: {
+    type: Number,
+    required: true
+},
   expense: [
     {
       type: Schema.Types.ObjectId,
