@@ -17,7 +17,15 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
     expenses: async (parent, args, context) => {
-      return User.findOne({ _id: args._id }).populate({path: "expenses", populate: "categories"});
+      return User.findOne({ _id: args._id }).populate({
+        path: "expenses",
+        populate: "categories",
+      });
+    },
+    category: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate("items");
+      }
     },
   },
 
@@ -44,7 +52,7 @@ const resolvers = {
 
       return { token, user };
     },
-    addExpense: async (parent, { name, expense, budget }, context) => {
+    addExpense: async (parent, { name, budget }, context) => {
       if (context.user) {
         // const budget = await Thought.create({
         //   thoughtText,
@@ -60,39 +68,16 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-  },
-  removeExpense: async (parent, { expenseid }, context) => {
-    if (context.user) {
-      await User.findOneAndUpdate(
-        { _id: context.user._id },
-        { $pull: { expenses: { _id: expenseid } } }
-      );
+    removeExpense: async (parent, { expenseid }, context) => {
+      if (context.user) {
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { expenses: { _id: expenseid } } }
+        );
 
-      return {message: "You have removed an expense!"};
-    }
-  },
-
-  addItem: async (parent, { name, price }, context) => {
-    if (context.user) {
-      const item = await User.findOneAndUpdate(
-        { _id: context.user._id },
-        { $addToSet: { items: { name, price } } }
-      );
-
-      return item;
-    }
-    throw new AuthenticationError("You need to be logged in!");
-  },
-
-  removeItem: async (parent, { itemid }, context) => {
-    if (context.user) {
-      await User.findOneAndUpdate(
-        { _id: context.user._id },
-        { $pull: { item: { _id: itemid } } }
-      );
-
-      return "You have removed an item!";
-    }
+        return { message: "You have removed an expense!" };
+      }
+    },
   },
 };
 

@@ -12,10 +12,7 @@ const expenseSchema = new Schema(
       type: Number,
       required: true
     },
-    budget: {
-        type: Number,
-        required: true
-    },
+
   }
 );
 

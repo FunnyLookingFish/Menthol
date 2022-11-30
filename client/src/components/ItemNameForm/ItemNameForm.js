@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useFinanceContext } from "../../utils/stateManagment/GlobalState";
+import { useQuery, useMutation } from '@apollo/client'
 
-export default function ItemNameForm(){
+export default function ItemNameForm(props){
     const [inputValue, setInputValue] = useState();
     const [optionValue, setOptionValue] = useState();
-    const [state, dispatch] = useFinanceContext();
+
+    const [ addItemToCat, {error}] = useMutation();//add item to category
 
     function handleInputChange(e){
         setInputValue(e.target.value);
@@ -12,25 +14,21 @@ export default function ItemNameForm(){
 
     function handleFormSubmit(e){
         e.preventDefault();
-        dispatch({
-            type: 'ADD_ITEM_TO_CAT',
-            payload:{
-                item: [inputValue],
-                name: optionValue
-            }
-        })
+        addItemToCat({variables: {_id: optionValue, itemName: inputValue}});
+        props.setSearch(true)
     };
 
     function handleOptionChange(e){
-        setOptionValue(e.target.value)
+        setOptionValue(e.target.id);
     };
     
+
     return(
         <form onSubmit={handleFormSubmit}>
             <input placeholder="Item Name" value={inputValue} onChange={handleInputChange} />
             <label>Choose a category:
                 <select value={optionValue} onChange={handleOptionChange}>
-                    {state.categories.map((category)=> <option key={category.name} value={category.name}>{category.name}</option>)}
+                    {props.category.map((category)=> <option key={category.name} id={category._id} value={category.name}>{category.name}</option>)}
                 </select>
             </label>
             <button type="submit">Add item to list</button>
