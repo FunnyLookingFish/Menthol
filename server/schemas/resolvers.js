@@ -68,7 +68,7 @@ const resolvers = {
         { $pull: { expenses: { _id: expenseid } } }
       );
 
-      return "You have removed an expense!";
+      return {message: "You have removed an expense!"};
     }
   },
 
