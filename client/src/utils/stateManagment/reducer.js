@@ -4,6 +4,10 @@ export function reducer(state, action){
     switch(action.type){
         //Different cases go here
         case 'ADD_ITEM_TO_CAT': return 
+        // case 'ADD_USER': return
+        //     {
+                
+        //     }
         default: return state;
     };
 };

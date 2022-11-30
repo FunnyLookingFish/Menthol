@@ -17,7 +17,7 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
     expenses: async (parent, args, context) => {
-      return User.findOne({ _id: args._id }).populate("expenses");
+      return User.findOne({ _id: args._id }).populate({path: "expenses", populate: "categories"});
     },
   },
 
@@ -68,7 +68,7 @@ const resolvers = {
         { $pull: { expenses: { _id: expenseid } } }
       );
 
-      return "You have removed an expense!";
+      return {message: "You have removed an expense!"};
     }
   },
 
