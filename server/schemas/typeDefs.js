@@ -16,9 +16,9 @@ const typeDefs = gql`
     budget: Int!
   }
 
-  type Item {
+  type Category {
     _id: ID
-    name: String
+    items: [Expense]!
     price: Int
   }
 
@@ -27,14 +27,14 @@ const typeDefs = gql`
     user(username: String!): User
     expenses(_id: ID): [Expense]
     me: User
-    item(id: ID!): Item
+    category(_id: ID): User
   }
 
   type Mutation {
-    addExpense(name: String!, expense: Int!, budget: Int!): Expense
-    removeExpense(expenseid: ID): String
-    addItem(name: String!, price: Int!): Item
-    removeItem(itemid: ID!): String
+    addUser(username: String!, email: String!, password: String!): User
+    login(email: String!, password: String!): User
+    addExpense(name: String, expense: Int!, budget: Int!): Expense
+    removeExpense(expenseid: ID): Expense
   }
 `;
 
