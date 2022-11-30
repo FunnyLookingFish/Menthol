@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const categorySchema = new Schema({
     items: [{
-        ref: 'Item',
+        ref: 'Expenses',
         type: Schema.Types.ObjectId
     }],
     name: {
