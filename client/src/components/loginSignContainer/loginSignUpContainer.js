@@ -7,7 +7,7 @@ export default function LoginSignUpContainer(state){
         setIsSigningUp(current => !current)
     }
     return (
-    <div className="border border-black-500">
+    <div className="block border border-black-500 max-w-sm">
     {isSigningUp
     ? <Signup/> 
     : <Login/>}
