@@ -12,14 +12,14 @@ const typeDefs = gql`
   type Expense {
     _id: ID
     name: String
-    expense: Number!
-    budget: Number!
+    expense: Int!
+    budget: Int!
   }
 
   type Item {
     _id: ID
     name: String
-    price: Number
+    price: Int
   }
 
   type Query {
@@ -27,13 +27,13 @@ const typeDefs = gql`
     user(username: String!): User
     expenses(_id: ID): [Expense]
     me: User
-    item:(id: ID!): Item
+    item(id: ID!): Item
   }
 
   type Mutation {
-    addExpense(name: String!, expense: Number!, budget: Number!): Expense
+    addExpense(name: String!, expense: Int!, budget: Int!): Expense
     removeExpense(expenseid: ID): String
-    addItem(name: String!, price: Number!): Item
+    addItem(name: String!, price: Int!): Item
     removeItem(itemid: ID!): String
   }
 `;
