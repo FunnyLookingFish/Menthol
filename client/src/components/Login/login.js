@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useFinanceContext } from "../../utils/stateManagment/GlobalState";
+import Auth from '../../utils/Auth/auth';
 // import { ADD_USER } from '../../utils/stateManagment/reducer'
 
 export default function Login(){

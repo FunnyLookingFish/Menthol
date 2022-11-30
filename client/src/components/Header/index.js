@@ -1,4 +1,5 @@
 import React from 'react';
+import Auth from '../../utils/Auth/auth';
 
 export default function Header () {
     return (
