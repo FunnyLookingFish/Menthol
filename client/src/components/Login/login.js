@@ -33,12 +33,11 @@ export default function Login(){
   return(
     <form onSubmit={handleFormSubmit}>
       <h2>Login</h2>
-      <input value={inputUserName} onChange={handleUsernameChange} placeholder='Username'></input>
-      <input value={inputEmail} onChange={handleEmailChange} placeholder='Email'></input>
-      <input value={inputPassword} onChange={handlePasswordChange} placeholder='Password'></input>
-      <button onClick={handleFormSubmit} type="submit">Login</button>
+      <input className="border" value={inputUserName} onChange={handleUsernameChange} placeholder='Username'></input>
+      <input className="border" value={inputEmail} onChange={handleEmailChange} placeholder='Email'></input>
+      <input className="border" value={inputPassword} onChange={handlePasswordChange} placeholder='Password'></input>
+      <button className="border" onClick={handleFormSubmit} type="submit">Login</button>
       <p>Don't have an account?</p>
     </form>
   )
-
 }

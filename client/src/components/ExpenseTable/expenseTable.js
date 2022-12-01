@@ -1,5 +1,5 @@
 // import Expense from "../../../../server/models/Expense";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 
 // export default function ExpenseTable(){
@@ -30,23 +30,23 @@ import { useEffect, useState } from "react";
 //         )
 //     })
 // }
-export default function ExpenseTable(){
-    return(
-        <div>
-            <table class="table-fixed">
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Cost</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>hello</td>
-                            <td>world</td>
-                        </tr>
-                    </tbody>
-                </table>
-        </div>
-    )
-}
+// export default function ExpenseTable(){
+//     return(
+//         <div>
+//             <table class="table-fixed">
+//                     <thead>
+//                         <tr>
+//                             <th>Title</th>
+//                             <th>Cost</th>
+//                         </tr>
+//                     </thead>
+//                     <tbody>
+//                         <tr>
+//                             <td>hello</td>
+//                             <td>world</td>
+//                         </tr>
+//                     </tbody>
+//                 </table>
+//         </div>
+//     )
+// }

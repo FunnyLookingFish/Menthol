@@ -1,9 +1,12 @@
+import { set } from 'mongoose';
 import {useState} from 'react';
 import { useFinanceContext } from '../../utils/stateManagment/GlobalState';
 
 export default function Signup(){
-    const [inputEmail, setEmail] = useState('');
+  const [inputUserName, setUserName] = useState('');
+  const [inputEmail, setEmail] = useState('');
   const [inputPassword, setPassword] = useState('');
+  const [inputBudget, setBudget] = useState('');
   const [state, dispatch] = useFinanceContext();
 
   let [authMode, setAuthMode] = useState("signin")
@@ -11,26 +14,30 @@ export default function Signup(){
   const changeAuthMode = () => {
     setAuthMode(authMode === "signin" ? "signup" : "signin")
   }
-
-
   function handlePasswordChange(e){
     setPassword(e.target.value);
   }
   function handleEmailChange(e){
     setEmail(e.target.value);
-
+  }
+  function handleBudgetChange(e){
+    setBudget(e.target.value);
+  }
+  function handleUsernameChange(e){
+    setUserName(e.target.value);
   }
   function handleFormSubmit(e){
     e.preventDefault();
     dispatch({
-
     })
   }
   return(
     <form onSubmit={handleFormSubmit}>
       <h2>Sign Up</h2>
+      <input value={inputUserName} onChange={handleUsernameChange} placeholder='Username'></input>
       <input value={inputEmail} onChange={handleEmailChange} placeholder='Email'></input>
       <input value={inputPassword} onChange={handlePasswordChange} placeholder='Password'></input>
+      <input value={inputBudget} onChange={handleBudgetChange} placeholder='Enter your budget'></input>
       <button onClick={changeAuthMode}type="submit">Login</button>
       <p>Already have an account?</p>
     </form>
