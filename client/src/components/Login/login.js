@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useFinanceContext } from "../../utils/stateManagment/GlobalState";
-// import { ADD_USER } from '../../utils/stateManagment/reducer'
 import Auth from '../../utils/Auth/auth';
+// import { ADD_USER } from '../../utils/stateManagment/reducer'
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../../utils/mutations";
 
