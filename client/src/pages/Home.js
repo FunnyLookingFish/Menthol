@@ -1,7 +1,7 @@
 
 export default function Home(){
     return (
-        <main>
+        <section>
             <h1>Menthol</h1>
             <hr />
             <p>
@@ -17,6 +17,6 @@ export default function Home(){
                     <button className="btn" style={{ cursor: 'pointer' }} type="sign-up"></button>
                 </div>
             </div>
-        </main>
+        </section>
     )
 }
