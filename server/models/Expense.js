@@ -9,7 +9,6 @@ const expenseSchema = new Schema(
     },
     expense: {
       type: Number,
-      required: true
     },
 
   }
