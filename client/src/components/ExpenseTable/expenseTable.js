@@ -3,14 +3,13 @@ import { useEffect, useState } from "react";
 
 
 export default function ExpenseTable(){
-    useEffect(() => {
-        const expenses = Expense.map((expense)=>{
-            return(
+        return(
+            <div>
+                {expenses.map((expense)=> (
                 <table class="table-fixed">
                     <thead>
                         <tr>
-                            <th>Title</th>
-                            <th>Category</th>
+                            <th>Name</th>
                             <th>Cost</th>
                         </tr>
                     </thead>
@@ -21,12 +20,8 @@ export default function ExpenseTable(){
                         </tr>
                     </tbody>
                 </table>
-            )
-        })
-        return(
-            <div>
-                {expenses}
+                ))}
             </div>
         )
-    })
 }
+

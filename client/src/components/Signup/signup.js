@@ -4,13 +4,14 @@ import Auth from '../../utils/Auth/auth';
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
 
+
 export default function Signup(){
   const [inputUserName, setUserName] = useState('');
   const [inputEmail, setEmail] = useState('');
   const [inputPassword, setPassword] = useState('');
   const [inputBudget, setBudget] = useState('');
   const [state, dispatch] = useFinanceContext();
-
+  const [addUser, {error}] = useMutation(ADD_USER);
   let [authMode, setAuthMode] = useState("signin")
 
   const changeAuthMode = () => {
