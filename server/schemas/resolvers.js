@@ -52,7 +52,7 @@ const resolvers = {
 
       return { token, user };
     },
-    addExpense: async (parent, { name, budget }, context) => {
+    addExpense: async (parent, { name, expense }, context) => {
       if (context.user) {
         // const budget = await Thought.create({
         //   thoughtText,
@@ -61,7 +61,7 @@ const resolvers = {
 
         const expense = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { expenses: { name, expense, budget } } }
+          { $addToSet: { expenses: { name, expense } } }
         );
 
         return expense;

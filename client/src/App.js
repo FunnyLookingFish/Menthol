@@ -71,7 +71,7 @@ function App() {
                   element={<Budget />} 
                 />
                 <Route 
-                  path="/about-us" 
+                  path="/aboutUs" 
                   element={<AboutUs />} 
                 />
 
