@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 
 export default function SelectItemNameForm(props){
     const [optionValue, setOptionValue] = useState();
     const [items, setItems] = useState();
     const [cost, setCost] = useState();
+
+    const [upDateExpenseCost] = useMutation();
     
 
     function handleOptionChange(e){
@@ -15,6 +17,9 @@ export default function SelectItemNameForm(props){
         const newCat = props.category.filter((category)=> category === optionValue);
         setItems(newCat)
     };
+    const costChange = (e) => {
+        setCost(e.target.value)
+    }
     const onSubmit = () => {
 
     };
@@ -30,7 +35,7 @@ export default function SelectItemNameForm(props){
                     {items.items.map((item)=> <option key={item} value={item}>{item}</option>)}
                 </select>
             </label>
-            <input value={cost} placeholder='cost' name="cost" />
+            <input value={cost} placeholder='cost' name="cost" onChange={costChange} />
             <button>Add cost</button>
         </form>
     )

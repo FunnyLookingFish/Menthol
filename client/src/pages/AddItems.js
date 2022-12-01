@@ -8,7 +8,7 @@ import { getCatAndItems } from "../utils/CRUD/Query/query";
 export default function AddItems(){
     const [category, setCategory] = useState();
     const [search, setSearch] = useState(false);
-    const [searchForItemAndCat] = useLazyQuery(getCatAndItems);//needs query defined
+    const [searchForItemAndCat] = useLazyQuery(getCatAndItems);
 
     useEffect(async () =>{
         const data = await searchForItemAndCat();
