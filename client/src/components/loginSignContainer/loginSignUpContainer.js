@@ -8,13 +8,13 @@ export default function LoginSignUpContainer(state){
         setIsSigningUp(current => !current)
     }
     return (
-    <div className="block border border-black-500 max-w-sm p-6">
+    <div className="my-auto flex flex-col h-screen border border-black-500 max-w-sm p-20">
     {isSigningUp
     ? <Signup/> 
     : <Login/>}
     {isSigningUp
-    ? <button className="bg-blue-500" onClick={toggleIsSigningUp}>Login</button>
-    : <button className='bg-blue' onClick={toggleIsSigningUp}>Sign Up</button>}
+    ? <button className=" underline hover:text-purple-400" onClick={toggleIsSigningUp}>Login</button>
+    : <button className="underline hover:text-purple-400" onClick={toggleIsSigningUp}>Sign Up</button>}
     </div>
     )
 }
