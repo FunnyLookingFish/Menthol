@@ -41,6 +41,7 @@ const typeDefs = gql`
     addExpense(name: String, expense: Int!): User
     removeExpense(expenseid: ID): Expense
     createCategory(name: String!): Category
+    updateExpense(name: String!): Expense
   }
 `;
 
