@@ -68,11 +68,11 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
 
-    updateExpense: async (parent, { name, expense, categoryid }, context) => {
+    updateExpense: async (parent, { expense, expenseId }, context) => {
       if (context.user) {
         const updatexp = await Expense.findByIdAndUpdate(
-          { _id: expenseid },
-          { name: name },
+          { _id: expenseId },
+          { expense: expense },
           { new: true }
         );
         return updatexp;
