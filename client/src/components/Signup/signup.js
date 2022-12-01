@@ -1,6 +1,8 @@
-import { set } from 'mongoose';
 import {useState} from 'react';
 import { useFinanceContext } from '../../utils/stateManagment/GlobalState';
+import Auth from '../../utils/Auth/auth';
+import { useMutation } from "@apollo/client";
+import { ADD_USER } from "../../utils/mutations";
 
 export default function Signup(){
   const [inputUserName, setUserName] = useState('');
@@ -26,10 +28,17 @@ export default function Signup(){
   function handleUsernameChange(e){
     setUserName(e.target.value);
   }
-  function handleFormSubmit(e){
+  const handleFormSubmit= async(e)=>{
     e.preventDefault();
-    dispatch({
-    })
+    try {
+      const mutationResponse = await addUser({
+        variables: { username: state.username, email: state.email, password: state.password, budget: state.budget },
+      });
+      const token = mutationResponse.data.login.token;
+      Auth.login(token);
+    } catch (e) {
+      console.log(e);
+    }
   }
   return(
     <form onSubmit={handleFormSubmit}>
