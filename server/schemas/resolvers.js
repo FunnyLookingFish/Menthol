@@ -17,10 +17,7 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
     expenses: async (parent, args, context) => {
-      return User.findOne({ _id: args._id }).populate({
-        path: "expenses",
-        populate: "categories",
-      });
+      return User.findOne({ _id: args._id }).populate("expenses");
     },
     category: async (parent, args, context) => {
         return Category.find().populate("items");
@@ -50,7 +47,7 @@ const resolvers = {
 
       return { token, user };
     },
-    addExpense: async (parent, { name, expense }, context) => {
+    addExpense: async (parent, { name, expense, categoryid }, context) => {
       if (context.user) {
         const newexpense = await Expense.create({ name, expense });
 
@@ -59,6 +56,12 @@ const resolvers = {
           { $addToSet: { expenses: { _id: newexpense._id } } },
           { new: true }
         );
+
+        const updatecat = await Category.findOneAndUpdate(
+            { _id: categoryid },
+            { $addToSet: { expenses: { _id: newexpense._id } } },
+            { new: true }
+          );
 
         return finance;
       }
