@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User } = require("../models");
+const { User, Expense, Category } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -23,15 +23,13 @@ const resolvers = {
       });
     },
     category: async (parent, args, context) => {
-      if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate("items");
-      }
+        return Category.find().populate("items");
     },
   },
 
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+    addUser: async (parent, { username, email, password, budget }) => {
+      const user = await User.create({ username, email, password, budget });
       const token = signToken(user);
       return { token, user };
     },
@@ -54,17 +52,15 @@ const resolvers = {
     },
     addExpense: async (parent, { name, expense }, context) => {
       if (context.user) {
-        // const budget = await Thought.create({
-        //   thoughtText,
-        //   thoughtAuthor: context.user.username,
-        // });
+        const newexpense = await Expense.create({ name, expense });
 
-        const expense = await User.findOneAndUpdate(
+        const finance = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { expenses: { name, expense } } }
+          { $addToSet: { expenses: { _id: newexpense._id } } },
+          { new: true }
         );
 
-        return expense;
+        return finance;
       }
       throw new AuthenticationError("You need to be logged in!");
     },
@@ -78,6 +74,9 @@ const resolvers = {
         return { message: "You have removed an expense!" };
       }
     },
+    createCategory: async (parent, { name }, context) => {
+        return await Category.create({ name: name }) 
+    }
   },
 };
 
