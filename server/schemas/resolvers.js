@@ -20,7 +20,7 @@ const resolvers = {
       return User.findOne({ _id: args._id }).populate("expenses");
     },
     category: async (parent, args, context) => {
-        return Category.find().populate("items");
+      return Category.find().populate("items");
     },
   },
 
@@ -47,6 +47,7 @@ const resolvers = {
 
       return { token, user };
     },
+
     addExpense: async (parent, { name, expense, categoryid }, context) => {
       if (context.user) {
         const newexpense = await Expense.create({ name, expense });
@@ -58,15 +59,26 @@ const resolvers = {
         );
 
         const updatecat = await Category.findOneAndUpdate(
-            { _id: categoryid },
-            { $addToSet: { expenses: { _id: newexpense._id } } },
-            { new: true }
-          );
-
+          { _id: categoryid },
+          { $addToSet: { expenses: { _id: newexpense._id } } },
+          { new: true }
+        );
         return finance;
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+
+    updateExpense: async (parent, { name, expense, categoryid }, context) => {
+      if (context.user) {
+        const updatexp = await Expense.findByIdAndUpdate(
+          { _id: expenseid },
+          { name: name },
+          { new: true }
+        );
+        return updatexp;
+      }
+    },
+
     removeExpense: async (parent, { expenseid }, context) => {
       if (context.user) {
         await User.findOneAndUpdate(
@@ -77,9 +89,10 @@ const resolvers = {
         return { message: "You have removed an expense!" };
       }
     },
+
     createCategory: async (parent, { name }, context) => {
-        return await Category.create({ name: name }) 
-    }
+      return await Category.create({ name: name });
+    },
   },
 };
 
