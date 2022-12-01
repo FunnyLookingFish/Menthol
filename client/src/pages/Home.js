@@ -10,7 +10,7 @@ export default function Home(){
             <div>
                 <div>
                     <h2>Sign in to track your expenses</h2>
-                    <button className="btn" style={{ cursor:'pointer' }} type="log-in" onClick={}></button>
+                    <button className="btn" style={{ cursor:'pointer' }} type="log-in" onClick=''></button>
                 </div>
                 <div>
                     <h2>Don't have an account? Sign up for free today!</h2>
