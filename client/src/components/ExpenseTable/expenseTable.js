@@ -1,4 +1,3 @@
-import Expense from "../../../../server/models/Expense";
 import { useEffect, useState } from "react";
 
 
