@@ -9,3 +9,12 @@ mutation Mutation($expense: Int!, $expenseId: ID!) {
   }
 }
 `;
+
+export const addExpense = gql`
+mutation AddExpense($name: String!, $categoryid: ID) {
+  addExpense(name: $name, categoryid: $categoryid) {
+    _id
+  }
+}
+
+`;

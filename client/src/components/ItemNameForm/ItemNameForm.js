@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useFinanceContext } from "../../utils/stateManagment/GlobalState";
-import { useQuery, useMutation } from '@apollo/client'
+import { useQuery, useMutation } from '@apollo/client';
+import {addExpense} from '../../utils/CRUD/Mutation/mutation'
 
 export default function ItemNameForm(props){
     const [inputValue, setInputValue] = useState();
     const [optionValue, setOptionValue] = useState();
 
-    const [ addItemToCat, {error}] = useMutation();//add item to category
+    const [ addItemToCat, {error}] = useMutation(addExpense);//add item to category
 
     function handleInputChange(e){
         setInputValue(e.target.value);
@@ -14,7 +15,7 @@ export default function ItemNameForm(props){
 
     function handleFormSubmit(e){
         e.preventDefault();
-        addItemToCat({variables: {_id: optionValue, itemName: inputValue}});
+        addItemToCat({variables: {categoryid: optionValue, name: inputValue}});
         props.setSearch(true)
     };
 
