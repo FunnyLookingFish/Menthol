@@ -58,19 +58,19 @@ What it looks like
 
 Morgan Tolman -  Front-End User Interface/JavaScript/React/CSS/Tailwind
 Visit Morgan on [GitHub](https://github.com/unheardof77)
-Email- 
+Email - morgan.tolman04@gmail.com
 
 Leo Roccaforte -  Front-End User Interface/JavaScript/React/Tailwind/CSS
 Visit Leo on [GitHub](https://github.com/LeoRocca40)
-Email- 
+Email - leoroccaforte@gmail.com
 
 Luis Morales - Back-End Server Connection/Database/GraphQL/Mongoose
 Visit Luis on [GitHub](https://github.com/FunnyLookingFish)
-Email- 
+Email - morales.luis1991@gmail.com
 
 Jake Schmidt -  Front-End User Interface/JavaScript/React/Tailwind/CSS
 Visit Jake on [GitHub](https://github.com/jr213)
-Email- 
+Email- jakeschmidt51@gmail.com
 
 Mychael Contreras - Back-End Server Connection/GraphQL/Mongoose/JWT
 Visit Mychael on [GitHub](https://github.com/MychaelC)
