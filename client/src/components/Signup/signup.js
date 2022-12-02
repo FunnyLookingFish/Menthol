@@ -44,11 +44,11 @@ export default function Signup(){
   return(
     <form onSubmit={handleFormSubmit}>
       <h2>Sign Up</h2>
-      <input value={inputUserName} onChange={handleUsernameChange} placeholder='Username'></input>
-      <input value={inputEmail} onChange={handleEmailChange} placeholder='Email'></input>
-      <input value={inputPassword} onChange={handlePasswordChange} placeholder='Password'></input>
-      <input value={inputBudget} onChange={handleBudgetChange} placeholder='Enter your budget'></input>
-      <button onClick={changeAuthMode}type="submit">Login</button>
+      <input className='border' value={inputUserName} onChange={handleUsernameChange} placeholder='Username'></input>
+      <input className='border' value={inputEmail} onChange={handleEmailChange} placeholder='Email'></input>
+      <input className='border' value={inputPassword} onChange={handlePasswordChange} placeholder='Password'></input>
+      <input className='border' value={inputBudget} onChange={handleBudgetChange} placeholder='Enter your budget'></input>
+      <button className='border ml-1' onClick={changeAuthMode}type="submit">Signup</button>
       <p>Already have an account?</p>
     </form>
   )

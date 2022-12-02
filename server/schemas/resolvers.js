@@ -48,9 +48,9 @@ const resolvers = {
       return { token, user };
     },
 
-    addExpense: async (parent, { name, expense, categoryid }, context) => {
+    addExpense: async (parent, { name,  categoryid }, context) => {
       if (context.user) {
-        const newexpense = await Expense.create({ name, expense });
+        const newexpense = await Expense.create({ name });
 
         const finance = await User.findOneAndUpdate(
           { _id: context.user._id },
