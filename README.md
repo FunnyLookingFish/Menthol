@@ -29,7 +29,7 @@ Once the user has opened up Menthol they will be prompted to sign up with an ema
 
 # Live Link
 
-View a link to the app [HERE]()
+View a link to the app [HERE](https://mentholfinance.herokuapp.com/)
 
 What it looks like
 
