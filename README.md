@@ -33,11 +33,8 @@ View a link to the app [HERE]()
 
 What it looks like
 
-![screenshot]()
+![screenshot](./assets/images/Screen%20Shot%202022-12-02%20at%2011.47.04%20AM.png)
 
-![screenshot]()
-
-![screenshot]()
 
 # Technology
 
