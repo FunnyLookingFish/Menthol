@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useLazyQuery } from "@apollo/client";
 import ItemNameForm from "../components/ItemNameForm/ItemNameForm";
 import SelectItemNameForm from "../components/SelectItemForm/SelectItemForm";
-import Header from "../components/Header/header.js";
+import Header from "../components/Header/Header.js";
 
 import { getCatAndItems } from "../utils/CRUD/Query/query";
 
